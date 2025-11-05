@@ -52,7 +52,7 @@ extralibs() {
 }
 
 command=$1
-shift
+[ $# -gt 0 ] && shift
 case $command in
   libsuffix) $command "$@" ;;
   dynlibflag) $command "$@" ;;
