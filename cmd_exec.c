@@ -112,6 +112,9 @@ int cmd_exec(context_t *context) {
       int status = 0;
       waitpid(child, &status, 0);
       ret = WEXITSTATUS(status);
+    } else {
+      /* Use of signal(2) over sigaction(2) is OK for this explicit purpose */
+      signal(SIGCHLD, SIG_IGN);
     }
   }
 
